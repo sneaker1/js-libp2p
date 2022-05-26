@@ -1,6 +1,6 @@
 # Webrtc-star example
 
-In this example we are going to setup an webrtc signalling server and connect multiple peers to it. With this setup peers can discover and connect to each other event if they are behind a NAT.
+In this example we are going to setup an webrtc signalling server and connect multiple peers to it. With this setup peers can discover and connect to each other even if they are behind a NAT.
 
 
 ## 01. Settting up the webrtc server with docker
