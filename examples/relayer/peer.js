@@ -29,7 +29,7 @@ const node = await createLibp2p( {
   },
   connectionManager: {
     dialTimeout: 1000000,
-    autoDial: true
+    autoDial: false
   },
   relay: {
     enabled: true,
