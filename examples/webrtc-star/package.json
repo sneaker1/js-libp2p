@@ -1,0 +1,21 @@
+{
+  "name": "webrtc-star",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "peer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@chainsafe/libp2p-noise": "^6.2.0",
+    "@libp2p/kad-dht": "^1.0.15",
+    "@libp2p/mplex": "^1.1.0",
+    "@libp2p/webrtc-star": "^1.0.12",
+    "@mapbox/node-pre-gyp": "^1.0.9",
+    "libp2p": "^0.37.1",
+    "wrtc": "^0.4.7"
+  }
+}
