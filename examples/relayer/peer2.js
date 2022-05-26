@@ -3,16 +3,15 @@ import {WebSockets} from "@libp2p/websockets";
 import {Noise} from "@chainsafe/libp2p-noise";
 import {Mplex} from "@libp2p/mplex";
 import {KadDHT} from "@libp2p/kad-dht";
-import {createFromJSON, createEd25519PeerId} from "@libp2p/peer-id-factory";
+import {createFromJSON} from "@libp2p/peer-id-factory";
 
 const hardcodedId = {
-  "id":"12D3KooWQ5G8SMrCJyKHxBVpnnFec1FqN2QFhvSPsJcCqJxWgo6V",
-  "privKey":"CAESQPNmgqm7eUfXESK6OBKKRU16t8DGttKBfcl8vAkMA1Yh09R/+sh7Xi1G4qOQ1MeBNoJMxRf/31URpCLn+Y9XqT4=",
-  "pubKey":"CAESINPUf/rIe14tRuKjkNTHgTaCTMUX/99VEaQi5/mPV6k+"
+  "id":"12D3KooWB3y5QaatkKu81yfp3sZXajXDGKihg9vcPmCGG5CsaU5m",
+  "privKey":"CAESQMRC8lYMmbLe01vU3KT5XEHhcN3JFaFH4wPr92DpE5K8Ele1QRWlpptwQV89zC0c317w1tSchuY4kik6b4jUcYg=",
+  "pubKey":"CAESIBJXtUEVpaabcEFfPcwtHN9e8NbUnIbmOJIpOm+I1HGI"
 }
 
-//const id = await createFromJSON(hardcodedId);
-const id = await createEd25519PeerId();
+const id = await createFromJSON(hardcodedId);
 var announceAddr = "/ip4/89.58.0.139/tcp/34200/ws/p2p/12D3KooWJJzN1f9rvrNEhxkT3kutpPF9EAALvx9EPDMA71AYtAFx/p2p-circuit/p2p/" + id.toString();
 console.log(announceAddr);
 const node = await createLibp2p( {
@@ -33,7 +32,7 @@ const node = await createLibp2p( {
     listen: [
       //"/ip4/0.0.0.0/tcp/0/ws",
       //"/dns4/relayer.ms102.de/tcp/443/wss/p2p/Qma5QbMXc4DsZCa55vGhQAhK1ZLxy4ZBFTQALRyNCjYVYg/p2p-circuit"
-      "/ip4/89.58.0.139/tcp/34200/ws/p2p/12D3KooWJJzN1f9rvrNEhxkT3kutpPF9EAALvx9EPDMA71AYtAFx/p2p-circuit",
+      //"/ip4/89.58.0.139/tcp/34200/ws/p2p/12D3KooWJJzN1f9rvrNEhxkT3kutpPF9EAALvx9EPDMA71AYtAFx/p2p-circuit",
     ],
     // announce: [
     announce: ["/ip4/89.58.0.139/tcp/34200/ws/p2p/12D3KooWJJzN1f9rvrNEhxkT3kutpPF9EAALvx9EPDMA71AYtAFx/p2p-circuit/p2p/" + id.toString()]

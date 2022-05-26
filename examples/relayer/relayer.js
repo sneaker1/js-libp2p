@@ -26,7 +26,7 @@ const node = await createLibp2p({
     // announce: ['/dns4/auto-relay.libp2p.io/tcp/443/wss/p2p/QmWDn2LY8nannvSWJzruUYoLZ4vV83vfCBwd8DipvdgQc3']
     //announce: ["/dns4/relayer.ms102.de/tcp/443/wss"],
   },
-  dht: new KadDHT(),
+  dht: new KadDHT({clientMode: false}),
   transports: [
     new WebSockets(),
   ],
