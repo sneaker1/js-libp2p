@@ -20,7 +20,7 @@ const node = await createLibp2p({
     listen: [
       //'/ip4/0.0.0.0/tcp/34200/ws',
       //'/dns4/relayer.ms102.de/tcp/443/wss'
-      '/ip4/89.58.0.139/tcp/34100/ws'
+      '/ip4/89.58.0.139/tcp/34200/ws'
     ],
     // TODO check "What is next?" section
     // announce: ['/dns4/auto-relay.libp2p.io/tcp/443/wss/p2p/QmWDn2LY8nannvSWJzruUYoLZ4vV83vfCBwd8DipvdgQc3']
