@@ -5,7 +5,7 @@ import {Noise} from "@chainsafe/libp2p-noise";
 import {Mplex} from "@libp2p/mplex";
 import {KadDHT} from "@libp2p/kad-dht";
 import {GossipSub} from "@chainsafe/libp2p-gossipsub";
-import { PubSubPeerDiscovery } from '@libp2p/pubsub-peer-discovery'
+import { PubSubPeerDiscovery } from '@libp2p/pubsub-peer-discovery';
 import {createRSAPeerId, createEd25519PeerId, createFromJSON, exportToProtobuf} from "@libp2p/peer-id-factory";
 import {fromString, toString} from "uint8arrays";
 
@@ -21,7 +21,7 @@ const node = await createLibp2p({
   peerId: id,
   addresses: {
     listen: [
-      '/ip4/0.0.0.0/tcp/0',
+      '/ip4/0.0.0.0/tcp/34200',
       //'/dns4/relayer.ms102.de/tcp/443/wss'
       //'/ip4/89.58.0.139/tcp/34200/ws'
     ],
