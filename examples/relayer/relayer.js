@@ -1,8 +1,11 @@
 import {createLibp2p} from "libp2p";
 import {WebSockets} from "@libp2p/websockets";
+import {TCP} from "@libp2p/tcp";
 import {Noise} from "@chainsafe/libp2p-noise";
 import {Mplex} from "@libp2p/mplex";
 import {KadDHT} from "@libp2p/kad-dht";
+import {GossipSub} from "@chainsafe/libp2p-gossipsub";
+import { PubSubPeerDiscovery } from '@libp2p/pubsub-peer-discovery'
 import {createRSAPeerId, createEd25519PeerId, createFromJSON, exportToProtobuf} from "@libp2p/peer-id-factory";
 import {fromString, toString} from "uint8arrays";
 
@@ -18,35 +21,24 @@ const node = await createLibp2p({
   peerId: id,
   addresses: {
     listen: [
-      //'/ip4/0.0.0.0/tcp/34200/ws',
+      '/ip4/0.0.0.0/tcp/0',
       //'/dns4/relayer.ms102.de/tcp/443/wss'
-      '/ip4/89.58.0.139/tcp/34200/ws'
+      //'/ip4/89.58.0.139/tcp/34200/ws'
     ],
-    // TODO check "What is next?" section
-    // announce: ['/dns4/auto-relay.libp2p.io/tcp/443/wss/p2p/QmWDn2LY8nannvSWJzruUYoLZ4vV83vfCBwd8DipvdgQc3']
-    //announce: ["/dns4/relayer.ms102.de/tcp/443/wss"],
   },
-  dht: new KadDHT({clientMode: false}),
-  transports: [
-    new WebSockets(),
-  ],
-  connectionEncryption: [
-    new Noise()
-  ],
-  streamMuxers: [
-    new Mplex()
+  transports: [new TCP()],
+  streamMuxers: [new Mplex()],
+  connectionEncryption: [new Noise()],
+  pubsub: new GossipSub(),
+  peerDiscovery: [
+    new PubSubPeerDiscovery({
+      interval: 1000
+    })
   ],
   relay: {
     enabled: true,
-    autoRelay: {
-      enabled: true,
-      maxListeners: 10
-    },
     hop: {
       enabled: true
-    },
-    advertise: {
-      enabled: true,
     }
   }
 })
