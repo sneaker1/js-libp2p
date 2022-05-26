@@ -56,7 +56,7 @@ await node.start()
 // Register Event handlers
 node.addEventListener("peer:discovery", async (evt) => {
   console.log("Discovered: " + evt.detail.id.toString());
-  await node.dial(evt.detail.id);
+  //await node.dial(evt.detail.id);
 });
 node.connectionManager.addEventListener("peer:connect", (evt) => {
   console.log("Connected: " + evt.detail.remotePeer.toString());

@@ -20,9 +20,9 @@ const node = await createLibp2p( {
   dht: new KadDHT(),
   addresses: {
     listen: [
-      "/ip4/0.0.0.0/tcp/0/ws",
+      //"/ip4/0.0.0.0/tcp/0/ws",
       //"/dns4/relayer.ms102.de/tcp/443/wss/p2p/Qma5QbMXc4DsZCa55vGhQAhK1ZLxy4ZBFTQALRyNCjYVYg/p2p-circuit"
-      //"/ip4/89.58.0.139/tcp/34100/ws/p2p/Qma5QbMXc4DsZCa55vGhQAhK1ZLxy4ZBFTQALRyNCjYVYg/p2p-circuit",
+      "/ip4/89.58.0.139/tcp/34200/ws/p2p/12D3KooWJJzN1f9rvrNEhxkT3kutpPF9EAALvx9EPDMA71AYtAFx/p2p-circuit",
     ],
     // announce: [
     //announce: [announceAddr]
@@ -42,7 +42,7 @@ const node = await createLibp2p( {
 }) // END libp2p.create
 
 await node.start()
-await node.dial("/ip4/192.168.0.123/tcp/34100/ws/p2p/12D3KooWJJzN1f9rvrNEhxkT3kutpPF9EAALvx9EPDMA71AYtAFx")
+await node.dial("/ip4/89.58.0.139/tcp/34200/ws/p2p/12D3KooWJJzN1f9rvrNEhxkT3kutpPF9EAALvx9EPDMA71AYtAFx")
 
 // Register Event handlers
 node.addEventListener("peer:discovery", async (evt) => {
