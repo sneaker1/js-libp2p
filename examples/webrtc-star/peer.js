@@ -14,7 +14,7 @@ const node = await createLibp2p( {
   connectionEncryption: [new Noise()],
   streamMuxers: [new Mplex()],
   dht: new KadDHT(),
-  connectionManger: {
+  connectionManager: {
     autoDial: false
   },
   addresses: {
@@ -28,6 +28,9 @@ const node = await createLibp2p( {
 await node.start();
 
 await node.components.getTransportManager().transports.get("@libp2p/webrtc-star").discovery.start();
+node.components.getTransportManager().transports.get("@libp2p/webrtc-star").discovery.addEventListener('peer', evt => {
+    node.onDiscoveryPeer(evt);
+});
 
 // Register handlers
 node.addEventListener("peer:discovery", (evt) => {
@@ -39,9 +42,7 @@ node.connectionManager.addEventListener("peer:connect", (evt) => {
 node.connectionManager.addEventListener("peer:disconnect", (evt) => {
   console.log("Disconnected: " + evt.detail.remotePeer.toString());
 });
-node.components.getTransportManager().transports.get("@libp2p/webrtc-star").discovery.addEventListener('peer', evt => {
-    node.onDiscoveryPeer(evt);
-});
+
 
 // Show Infos
 console.log(`Peer started with id ${node.peerId.toString()}`)
